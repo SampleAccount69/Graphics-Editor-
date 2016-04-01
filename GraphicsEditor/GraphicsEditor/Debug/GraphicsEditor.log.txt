@@ -1,0 +1,8 @@
+﻿  GraphicsEditor-MainWindow.cpp
+  Source.cpp
+  Generating Code...
+Source.obj : warning LNK4248: unresolved typeref token (0100000D) for 'SDL_Window'; image may not run
+GraphicsEditor-MainWindow.obj : warning LNK4248: unresolved typeref token (0100000D) for 'SDL_Window'; image may not run
+Source.obj : warning LNK4248: unresolved typeref token (0100000E) for 'SDL_Renderer'; image may not run
+GraphicsEditor-MainWindow.obj : warning LNK4248: unresolved typeref token (0100000E) for 'SDL_Renderer'; image may not run
+  GraphicsEditor.vcxproj -> C:\Users\kalin\Desktop\NEWFOLDER - Copy\GraphicsEditor\GraphicsEditor\Debug\GraphicsEditor.exe
