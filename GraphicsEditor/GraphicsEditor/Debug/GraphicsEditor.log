@@ -5,5 +5,5 @@ Source.obj : warning LNK4248: unresolved typeref token (0100000D) for 'SDL_Windo
 GraphicsEditor-MainWindow.obj : warning LNK4248: unresolved typeref token (0100000D) for 'SDL_Window'; image may not run
 Source.obj : warning LNK4248: unresolved typeref token (0100000E) for 'SDL_Renderer'; image may not run
 GraphicsEditor-MainWindow.obj : warning LNK4248: unresolved typeref token (0100000E) for 'SDL_Renderer'; image may not run
-.NETFramework,Version=v4.5.2.AssemblyAttributes.obj : warning LNK4099: PDB 'vc140.pdb' was not found with '.NETFramework,Version=v4.5.2.AssemblyAttributes.obj' or at 'D:\Things\FMI\PMMRP\NEWFOLDER - Copy\GraphicsEditor\GraphicsEditor\Debug\vc140.pdb'; linking object as if no debug info
-  GraphicsEditor.vcxproj -> D:\Things\FMI\PMMRP\NEWFOLDER - Copy\GraphicsEditor\GraphicsEditor\Debug\GraphicsEditor.exe
+.NETFramework,Version=v4.5.2.AssemblyAttributes.obj : warning LNK4099: PDB 'vc140.pdb' was not found with '.NETFramework,Version=v4.5.2.AssemblyAttributes.obj' or at 'D:\Things\FMI\PMMRP\???? ?????\GraphicsEditor\GraphicsEditor\Debug\vc140.pdb'; linking object as if no debug info
+  GraphicsEditor.vcxproj -> D:\Things\FMI\PMMRP\Нова папка\GraphicsEditor\GraphicsEditor\Debug\GraphicsEditor.exe
