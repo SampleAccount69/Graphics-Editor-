@@ -1,0 +1,17 @@
+﻿  GraphicsEditor-MainWindow.cpp
+c:\users\kalin\desktop\newfolder\graphics-editor-\graphicseditor\graphicseditor\Header.h(24): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+c:\users\kalin\desktop\newfolder\graphics-editor-\graphicseditor\graphicseditor\GraphicsEditor-MainWindow.h(317): warning C4101: 'point3': unreferenced local variable
+c:\users\kalin\desktop\newfolder\graphics-editor-\graphicseditor\graphicseditor\GraphicsEditor-MainWindow.h(315): warning C4101: 'point1': unreferenced local variable
+c:\users\kalin\desktop\newfolder\graphics-editor-\graphicseditor\graphicseditor\GraphicsEditor-MainWindow.h(316): warning C4101: 'point2': unreferenced local variable
+  Source.cpp
+c:\users\kalin\desktop\newfolder\graphics-editor-\graphicseditor\graphicseditor\Header.h(24): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+c:\users\kalin\desktop\newfolder\graphics-editor-\graphicseditor\graphicseditor\GraphicsEditor-MainWindow.h(317): warning C4101: 'point3': unreferenced local variable
+c:\users\kalin\desktop\newfolder\graphics-editor-\graphicseditor\graphicseditor\GraphicsEditor-MainWindow.h(315): warning C4101: 'point1': unreferenced local variable
+c:\users\kalin\desktop\newfolder\graphics-editor-\graphicseditor\graphicseditor\GraphicsEditor-MainWindow.h(316): warning C4101: 'point2': unreferenced local variable
+Source.cpp(67): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+Source.obj : warning LNK4248: unresolved typeref token (0100000D) for 'SDL_Window'; image may not run
+GraphicsEditor-MainWindow.obj : warning LNK4248: unresolved typeref token (0100000D) for 'SDL_Window'; image may not run
+Source.obj : warning LNK4248: unresolved typeref token (0100000E) for 'SDL_Renderer'; image may not run
+GraphicsEditor-MainWindow.obj : warning LNK4248: unresolved typeref token (0100000E) for 'SDL_Renderer'; image may not run
+  GraphicsEditor.vcxproj -> C:\Users\kalin\Desktop\NEWFOLDER\Graphics-Editor-\GraphicsEditor\Debug\GraphicsEditor.exe

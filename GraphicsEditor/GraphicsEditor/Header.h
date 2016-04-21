@@ -3,11 +3,39 @@
 
 #pragma once
 #include <SDL/SDL.h>
+#include <cmath>
 
-SDL_Window* newWindow();
+namespace functions
+{
+	struct Point
+	{
+		int x;
+		int y;
 
-SDL_Renderer* newRenderer(SDL_Window*);
+		Point(int x1 = 0, int y1 = 0)
+		{
+			x = x1;
+			y = y1;
+		}
 
-void processInput();
+		int distance(Point secondPoint)
+		{
+			return sqrt((this->x - secondPoint.x) * (this->x - secondPoint.x) +
+						(this->y - secondPoint.y) * (this->y - secondPoint.y));
+		}
+	};
 
-//#endif 
+	SDL_Window* newWindow();
+
+	SDL_Renderer* newRenderer(SDL_Window*);
+
+	void BresenhamCircleDraw(int xx, int yy, int radius, SDL_Renderer* renderer);
+
+	void display(int x1, int y1, int xx, int yy, SDL_Renderer* renderer);
+
+	void bresenhamLine(Point &first, Point &second, SDL_Renderer* renderer);
+	//#endif 
+
+
+
+}
