@@ -1,0 +1,21 @@
+﻿  GraphicsEditor-MainWindow.cpp
+d:\things\fmi\pmmrp\graphics editor\graphicseditor\graphicseditor\Header.h(48): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+d:\things\fmi\pmmrp\graphics editor\graphicseditor\graphicseditor\GraphicsEditor-MainWindow.h(401): warning C4101: 'point3': unreferenced local variable
+d:\things\fmi\pmmrp\graphics editor\graphicseditor\graphicseditor\GraphicsEditor-MainWindow.h(399): warning C4101: 'point1': unreferenced local variable
+d:\things\fmi\pmmrp\graphics editor\graphicseditor\graphicseditor\GraphicsEditor-MainWindow.h(400): warning C4101: 'point2': unreferenced local variable
+d:\things\fmi\pmmrp\graphics editor\graphicseditor\graphicseditor\GraphicsEditor-MainWindow.h(481): warning C4552: '-': operator has no effect; expected operator with side-effect
+  Source.cpp
+d:\things\fmi\pmmrp\graphics editor\graphicseditor\graphicseditor\Header.h(48): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+d:\things\fmi\pmmrp\graphics editor\graphicseditor\graphicseditor\GraphicsEditor-MainWindow.h(401): warning C4101: 'point3': unreferenced local variable
+d:\things\fmi\pmmrp\graphics editor\graphicseditor\graphicseditor\GraphicsEditor-MainWindow.h(399): warning C4101: 'point1': unreferenced local variable
+d:\things\fmi\pmmrp\graphics editor\graphicseditor\graphicseditor\GraphicsEditor-MainWindow.h(400): warning C4101: 'point2': unreferenced local variable
+d:\things\fmi\pmmrp\graphics editor\graphicseditor\graphicseditor\GraphicsEditor-MainWindow.h(481): warning C4552: '-': operator has no effect; expected operator with side-effect
+Source.cpp(31): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+Source.cpp(200): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+Source.cpp(206): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+Source.obj : warning LNK4248: unresolved typeref token (0100000D) for 'SDL_Window'; image may not run
+GraphicsEditor-MainWindow.obj : warning LNK4248: unresolved typeref token (0100000D) for 'SDL_Window'; image may not run
+Source.obj : warning LNK4248: unresolved typeref token (0100000E) for 'SDL_Renderer'; image may not run
+GraphicsEditor-MainWindow.obj : warning LNK4248: unresolved typeref token (0100000E) for 'SDL_Renderer'; image may not run
+  GraphicsEditor.vcxproj -> D:\Things\FMI\PMMRP\Graphics Editor\GraphicsEditor\Debug\GraphicsEditor.exe

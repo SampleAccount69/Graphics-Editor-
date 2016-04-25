@@ -22,42 +22,6 @@ SDL_Renderer* functions::newRenderer(SDL_Window* window)
 	return renderer;
 }
 
-/*
-void close()
-{
-	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(window);
-	SDL_RenderClear(renderer);
-	SDL_RenderPresent(renderer);
-	SDL_Quit();
-
-	renderer = NULL;
-	window = NULL;
-
-	SDL_Surface* pScreenShot = SDL_CreateRGBSurface(0, 500, 500, 32, 0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
-
-	if (pScreenShot)
-	{
-		// Read the pixels from the current render target and save them onto the surface 
-		SDL_RenderReadPixels(renderer, NULL, SDL_GetWindowPixelFormat(window), pScreenShot->pixels, pScreenShot->pitch);
-
-		Random random;
-		char name[1];
-		for (int i = 0; i < 1; i++)
-		{
-			name[i] = (char)random.Next(1000000, 5000000);
-		}
-
-		//Create the bmp screenshot file 
-		SDL_SaveBMP(pScreenShot, "ght.bmp");
-
-		// Destroy the screenshot surface 
-		SDL_FreeSurface(pScreenShot);
-	}
-
-}*/
-
-
 void functions::BresenhamCircleDraw(int xx, int yy, int radius, SDL_Renderer* renderer)
 {
 	float dp;	//initialising the descision parameter.
@@ -76,7 +40,8 @@ void functions::BresenhamCircleDraw(int xx, int yy, int radius, SDL_Renderer* re
 		x1++;
 		display(x1, y1, xx, yy, renderer);
 	}
-}	 
+}
+
 void functions::display(int x1, int y1, int xx, int yy, SDL_Renderer* renderer)
 {
 	SDL_RenderDrawPoint(renderer, xx, yy); //plotting the pixels. 
@@ -92,10 +57,10 @@ void functions::display(int x1, int y1, int xx, int yy, SDL_Renderer* renderer)
 
 void functions::bresenhamLine(Point &first, Point &second, SDL_Renderer* renderer)
 {
-	int x1 = first.x;
-	int	y1 = first.y;
-	int	x2 = second.x;
-	int	y2 = second.y;
+	int x1 = first.getX();
+	int	y1 = first.getY();
+	int	x2 = second.getX();
+	int	y2 = second.getY();
 	int	x, y;
 	bool axis = abs(y2 - y1) - abs(x2 - x1) > 0;  // slope greater than 45 degrees exchanging x and y coordinates of each  
 												//point to use the case where the slope is less than 45 degree( chooses the main axis)
@@ -144,3 +109,146 @@ void functions::bresenhamLine(Point &first, Point &second, SDL_Renderer* rendere
 	}
 	SDL_RenderPresent(renderer);
 }
+
+double* functions::createTableBinomials(int n)
+{
+	double* binomials = new double[n];
+	int num = n - 1;
+	int helpCountingNum = n - 1;
+	int denum = 1;
+	int helpCountingDenum = 1;
+
+	binomials[0] = 1;
+
+	for (int i = 1; i < n; i++)
+	{
+		binomials[i] = num / denum;
+		num *= --helpCountingNum;
+		denum *= ++helpCountingDenum;
+
+	}
+
+	return binomials;
+}
+
+double** functions::createTablePows(int n)
+{
+	const int CONST_T = 101;
+	double** pows = new double*[CONST_T];
+
+	for (int i = 0; i < CONST_T; i++)
+	{
+		pows[i] = new double[n];
+	}
+
+	for (int t = 0; t < CONST_T; t++)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			pows[t][i] = pow(t / 100.0, i);
+		}
+	}
+
+	return pows;
+}
+
+double** functions::createTable(int n)
+{
+	const int CONST_T = 101;
+
+	double* binomials = createTableBinomials(n);
+	double** pows = createTablePows(n);
+	double** finalTable = new double*[CONST_T];
+
+	for (int i = 0; i < CONST_T; i++)
+	{
+		finalTable[i] = new double[n];
+	}
+
+	for (int t = 0; t < CONST_T; t++)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			finalTable[t][i] = binomials[i] * pows[t][i] * pows[CONST_T - 1 - t][n - i - 1];
+		}
+	}
+
+	return finalTable;
+}
+
+void functions::bezier(std::vector<functions::Point> points, SDL_Renderer* renderer)
+{
+	const int CONST_T = 101;
+	
+	int pointsSize = points.size();
+	double** table = functions::createTable(pointsSize);
+	functions::Point previousPoint;
+	functions::Point currentPoint;
+
+	for (int t = 0; t < CONST_T; t++)
+	{
+		double newPointX = 0;
+		double newPointY = 0;
+		for (int i = 0; i < pointsSize; ++i)
+		{
+			newPointX += (double)table[t][i] * points[i].getX();
+			newPointY += (double)table[t][i] * points[i].getY();
+		}
+		
+		if (t != 0)
+		{
+			currentPoint = functions::Point(round(newPointX), round(newPointY));
+			bresenhamLine(previousPoint, currentPoint, renderer);
+			previousPoint = currentPoint;
+		}
+		else
+		{
+			previousPoint = functions::Point(round(newPointX), round(newPointY));
+		}
+	}
+}
+
+void functions::rectangle(Point &first, Point &second, SDL_Renderer* renderer)
+{
+	functions::Point temp1 = functions::Point(first.getX(), second.getY());
+	functions::Point temp2 = functions::Point(second.getX(), first.getY());
+	functions::bresenhamLine(first, temp1, renderer);
+	functions::bresenhamLine(first, temp2, renderer);
+	functions::bresenhamLine(second, temp1, renderer);
+	functions::bresenhamLine(second, temp2, renderer);
+}
+
+/*
+void close()
+{
+SDL_DestroyRenderer(renderer);
+SDL_DestroyWindow(window);
+SDL_RenderClear(renderer);
+SDL_RenderPresent(renderer);
+SDL_Quit();
+
+renderer = NULL;
+window = NULL;
+
+SDL_Surface* pScreenShot = SDL_CreateRGBSurface(0, 500, 500, 32, 0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
+
+if (pScreenShot)
+{
+// Read the pixels from the current render target and save them onto the surface
+SDL_RenderReadPixels(renderer, NULL, SDL_GetWindowPixelFormat(window), pScreenShot->pixels, pScreenShot->pitch);
+
+Random random;
+char name[1];
+for (int i = 0; i < 1; i++)
+{
+name[i] = (char)random.Next(1000000, 5000000);
+}
+
+//Create the bmp screenshot file
+SDL_SaveBMP(pScreenShot, "ght.bmp");
+
+// Destroy the screenshot surface
+SDL_FreeSurface(pScreenShot);
+}
+
+}*/
